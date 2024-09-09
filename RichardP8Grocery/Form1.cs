@@ -6,10 +6,5 @@ namespace RichardP8Grocery
         {
             InitializeComponent();
         }
-
-        private void btnPrepareFood_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

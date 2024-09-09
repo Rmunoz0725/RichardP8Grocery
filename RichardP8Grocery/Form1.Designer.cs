@@ -45,7 +45,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            label1.Location = new Point(448, 9);
+            label1.Location = new Point(296, 9);
             label1.Name = "label1";
             label1.Size = new Size(212, 25);
             label1.TabIndex = 0;
@@ -114,7 +114,7 @@
             // 
             // btnCalcPrice
             // 
-            btnCalcPrice.Location = new Point(75, 415);
+            btnCalcPrice.Location = new Point(78, 406);
             btnCalcPrice.Name = "btnCalcPrice";
             btnCalcPrice.Size = new Size(122, 23);
             btnCalcPrice.TabIndex = 8;
@@ -123,17 +123,16 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(359, 415);
+            btnClear.Location = new Point(360, 406);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 23);
             btnClear.TabIndex = 9;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnPrepareFood_Click;
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(653, 415);
+            btnQuit.Location = new Point(653, 406);
             btnQuit.Name = "btnQuit";
             btnQuit.Size = new Size(75, 23);
             btnQuit.TabIndex = 10;
