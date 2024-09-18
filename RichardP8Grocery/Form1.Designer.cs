@@ -65,6 +65,8 @@
             txtItemCost.Name = "txtItemCost";
             txtItemCost.Size = new Size(146, 23);
             txtItemCost.TabIndex = 2;
+            txtItemCost.Enter += txtItemCost_Enter;
+            txtItemCost.Leave += txtItemCost_Leave;
             // 
             // lblNumofItems
             // 
@@ -82,6 +84,8 @@
             txtNumofItems.Name = "txtNumofItems";
             txtNumofItems.Size = new Size(146, 23);
             txtNumofItems.TabIndex = 4;
+            txtNumofItems.Enter += txtNumofItems_Enter;
+            txtNumofItems.Leave += txtNumofItems_Leave;
             // 
             // lstOutput
             // 
