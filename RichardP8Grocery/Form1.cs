@@ -14,9 +14,6 @@ namespace RichardP8Grocery
             txtItemCost.Clear();
             txtNumofItems.Clear();
             lstOutput.Items.Clear();
-
-            //this changes the focus of the clear button
-            // btnClear.Focus();
             txtItemCost.Focus();
         }
 
@@ -27,16 +24,25 @@ namespace RichardP8Grocery
 
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
-            // input
+            double taxRate = .0875;
+            double price, totalPrice, taxAmount;
 
+            // input
+            price = double.Parse(txtItemCost.Text);
 
 
             // processing
-
-
+            taxAmount = price * taxRate;
+            totalPrice = taxAmount + price;
 
             // output
+            lstOutput.Items.Add("Price is " + price.ToString("C2"));
+            lstOutput.Items.Add("Tax Rate is " + taxRate.ToString("P2"));
+            lstOutput.Items.Add("Tax amount is " + taxAmount.ToString("C2"));
+            lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
 
+            //this changes the focus of the clear button
+            btnClear.Focus();
         }
 
         private void txtItemCost_Enter(object sender, EventArgs e)
