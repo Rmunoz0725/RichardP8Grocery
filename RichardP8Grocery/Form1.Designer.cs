@@ -37,6 +37,8 @@
             btnCalcPrice = new Button();
             btnClear = new Button();
             btnQuit = new Button();
+            lblItemName = new Label();
+            txtItemName = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -53,18 +55,18 @@
             // 
             lblItemCost.AutoSize = true;
             lblItemCost.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblItemCost.Location = new Point(53, 72);
+            lblItemCost.Location = new Point(401, 67);
             lblItemCost.Name = "lblItemCost";
             lblItemCost.Size = new Size(61, 15);
-            lblItemCost.TabIndex = 1;
+            lblItemCost.TabIndex = 3;
             lblItemCost.Text = "Item Cost";
             // 
             // txtItemCost
             // 
-            txtItemCost.Location = new Point(182, 69);
+            txtItemCost.Location = new Point(553, 64);
             txtItemCost.Name = "txtItemCost";
             txtItemCost.Size = new Size(146, 23);
-            txtItemCost.TabIndex = 2;
+            txtItemCost.TabIndex = 4;
             txtItemCost.Enter += txtItemCost_Enter;
             txtItemCost.Leave += txtItemCost_Leave;
             // 
@@ -72,18 +74,18 @@
             // 
             lblNumofItems.AutoSize = true;
             lblNumofItems.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblNumofItems.Location = new Point(53, 123);
+            lblNumofItems.Location = new Point(401, 123);
             lblNumofItems.Name = "lblNumofItems";
             lblNumofItems.Size = new Size(103, 15);
-            lblNumofItems.TabIndex = 3;
+            lblNumofItems.TabIndex = 5;
             lblNumofItems.Text = "Number of Items";
             // 
             // txtNumofItems
             // 
-            txtNumofItems.Location = new Point(182, 120);
+            txtNumofItems.Location = new Point(553, 123);
             txtNumofItems.Name = "txtNumofItems";
             txtNumofItems.Size = new Size(146, 23);
-            txtNumofItems.TabIndex = 4;
+            txtNumofItems.TabIndex = 6;
             txtNumofItems.Enter += txtNumofItems_Enter;
             txtNumofItems.Leave += txtNumofItems_Leave;
             // 
@@ -127,11 +129,32 @@
             btnQuit.UseVisualStyleBackColor = true;
             btnQuit.Click += btnQuit_Click;
             // 
+            // lblItemName
+            // 
+            lblItemName.AutoSize = true;
+            lblItemName.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblItemName.Location = new Point(78, 96);
+            lblItemName.Name = "lblItemName";
+            lblItemName.Size = new Size(82, 15);
+            lblItemName.TabIndex = 1;
+            lblItemName.Text = "Grocery Item";
+            // 
+            // txtItemName
+            // 
+            txtItemName.Location = new Point(182, 93);
+            txtItemName.Name = "txtItemName";
+            txtItemName.Size = new Size(147, 23);
+            txtItemName.TabIndex = 2;
+            txtItemName.Enter += txtItemName_Enter;
+            txtItemName.Leave += txtItemName_Leave;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtItemName);
+            Controls.Add(lblItemName);
             Controls.Add(btnQuit);
             Controls.Add(btnClear);
             Controls.Add(btnCalcPrice);
@@ -158,5 +181,7 @@
         private Button btnCalcPrice;
         private Button btnClear;
         private Button btnQuit;
+        private Label lblItemName;
+        private TextBox txtItemName;
     }
 }
