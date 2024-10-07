@@ -13,7 +13,7 @@ namespace RichardP8Grocery
         {
             txtItemName.Clear();
             txtItemCost.Clear();
-            txtNumofItems.Clear();
+            txtNumItems.Clear();
             lstOutput.Items.Clear();
             txtItemName.Focus();
         }
@@ -25,34 +25,52 @@ namespace RichardP8Grocery
 
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
-            string groceryItem;
+            string GroceryItem;
             double saleTaxRate = .0875;
-            double subTotal, price, totalPrice, totalTaxPrice;
-            int numItems;
+            double subTotal, itemPrice, totalPrice, totalTaxPrice;
+            int totalItems;
+            bool ItemPriceValid, NumItemValid;
 
-            // input
-            price = double.Parse(txtItemCost.Text);
-            numItems = int.Parse(txtNumofItems.Text);
-            groceryItem = txtItemName.Text;
+            ItemPriceValid = double.TryParse(txtItemCost.Text, out itemPrice);
+            NumItemValid = int.TryParse(txtNumItems.Text, out totalItems);
 
+            //if statement here
+            if (ItemPriceValid && NumItemValid)
+            {
+                // it is a good idea to dave string input to a variable
+                GroceryItem = txtItemName.Text;
+                // input
+                itemPrice = double.Parse(txtItemCost.Text);
+                totalItems = int.Parse(txtNumItems.Text);
+                GroceryItem = txtItemName.Text;
 
-            // processing
-            subTotal = price * numItems;
-            totalTaxPrice = subTotal * saleTaxRate;
-            totalPrice = totalTaxPrice + subTotal;
+                // processing
+                subTotal = itemPrice * totalItems;
+                totalTaxPrice = subTotal * saleTaxRate;
+                totalPrice = totalTaxPrice + subTotal;
 
+                // output
+                lstOutput.Items.Add("Item scanned to buy is " + GroceryItem);
+                lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
+                lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
+                lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
+                lstOutput.Items.Add("Sub total is " + subTotal.ToString("C2")); ;
+                lstOutput.Items.Add("Tax amount is " + totalTaxPrice.ToString("C2"));
+                lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
 
-            // output
-            lstOutput.Items.Add("Name of item scanned to buy is " + groceryItem);
-            lstOutput.Items.Add("Total Number of Items is " + numItems.ToString("N0"));
-            lstOutput.Items.Add("Item Cost is " + price.ToString("C2"));
-            lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
-            lstOutput.Items.Add("Sub total is " + subTotal.ToString("C2")); ;
-            lstOutput.Items.Add("Tax Price left to add is " + totalTaxPrice.ToString("C2"));
-            lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
-
-            //this changes the focus of the clear button
-            btnClear.Focus();
+                //this changes the focus of the clear button
+                btnClear.Focus();
+            }else
+            {
+                if (!ItemPriceValid)
+                {
+                  lstOutput.Items.Add("Please enter a numeric entry for Item Cost");
+                }
+                if (!NumItemValid)
+                {
+                  lstOutput.Items.Add("Please enter a numeric entry Number of Items");
+                }
+            }
         }
 
         private void txtItemCost_Enter(object sender, EventArgs e)
@@ -67,12 +85,12 @@ namespace RichardP8Grocery
 
         private void txtNumofItems_Enter(object sender, EventArgs e)
         {
-            txtNumofItems.BackColor = Color.Bisque;
+            txtNumItems.BackColor = Color.Bisque;
         }
 
         private void txtNumofItems_Leave(object sender, EventArgs e)
         {
-            txtNumofItems.BackColor = SystemColors.Window;
+            txtNumItems.BackColor = SystemColors.Window;
         }
 
         private void txtItemName_Enter(object sender, EventArgs e)

@@ -32,7 +32,7 @@
             lblItemCost = new Label();
             txtItemCost = new TextBox();
             lblNumofItems = new Label();
-            txtNumofItems = new TextBox();
+            txtNumItems = new TextBox();
             lstOutput = new ListBox();
             btnCalcPrice = new Button();
             btnClear = new Button();
@@ -80,14 +80,14 @@
             lblNumofItems.TabIndex = 5;
             lblNumofItems.Text = "Number of Items";
             // 
-            // txtNumofItems
+            // txtNumItems
             // 
-            txtNumofItems.Location = new Point(553, 123);
-            txtNumofItems.Name = "txtNumofItems";
-            txtNumofItems.Size = new Size(146, 23);
-            txtNumofItems.TabIndex = 6;
-            txtNumofItems.Enter += txtNumofItems_Enter;
-            txtNumofItems.Leave += txtNumofItems_Leave;
+            txtNumItems.Location = new Point(553, 123);
+            txtNumItems.Name = "txtNumItems";
+            txtNumItems.Size = new Size(146, 23);
+            txtNumItems.TabIndex = 6;
+            txtNumItems.Enter += txtNumofItems_Enter;
+            txtNumItems.Leave += txtNumofItems_Leave;
             // 
             // lstOutput
             // 
@@ -159,7 +159,7 @@
             Controls.Add(btnClear);
             Controls.Add(btnCalcPrice);
             Controls.Add(lstOutput);
-            Controls.Add(txtNumofItems);
+            Controls.Add(txtNumItems);
             Controls.Add(lblNumofItems);
             Controls.Add(txtItemCost);
             Controls.Add(lblItemCost);
@@ -176,7 +176,7 @@
         private Label lblItemCost;
         private TextBox txtItemCost;
         private Label lblNumofItems;
-        private TextBox txtNumofItems;
+        private TextBox txtNumItems;
         private ListBox lstOutput;
         private Button btnCalcPrice;
         private Button btnClear;
