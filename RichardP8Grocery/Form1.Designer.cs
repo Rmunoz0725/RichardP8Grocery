@@ -103,7 +103,7 @@
             // 
             btnCalcPrice.Location = new Point(78, 393);
             btnCalcPrice.Name = "btnCalcPrice";
-            btnCalcPrice.Size = new Size(122, 23);
+            btnCalcPrice.Size = new Size(140, 23);
             btnCalcPrice.TabIndex = 8;
             btnCalcPrice.Text = "Calculate Final &Price";
             btnCalcPrice.UseVisualStyleBackColor = true;
@@ -111,9 +111,9 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(360, 393);
+            btnClear.Location = new Point(355, 393);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(92, 23);
+            btnClear.Size = new Size(107, 23);
             btnClear.TabIndex = 9;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(651, 393);
+            btnQuit.Location = new Point(599, 393);
             btnQuit.Name = "btnQuit";
-            btnQuit.Size = new Size(75, 23);
+            btnQuit.Size = new Size(100, 23);
             btnQuit.TabIndex = 10;
             btnQuit.Text = "&Quit";
             btnQuit.UseVisualStyleBackColor = true;

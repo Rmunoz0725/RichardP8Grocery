@@ -1,3 +1,4 @@
+using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RichardP8Grocery
@@ -20,13 +21,20 @@ namespace RichardP8Grocery
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult ButtonSelected;
+            ButtonSelected = MessageBox.Show(
+                "Do you really want to Quit?", "Exiting...",
+                MessageBoxButtons.YesNo);
+            if (ButtonSelected == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
             string GroceryItem;
-            double saleTaxRate = .0875;
+            double saleTaxRate = .08875;
             double subTotal, itemPrice, totalPrice, totalTaxPrice;
             int totalItems;
             bool ItemPriceValid, NumItemValid;
@@ -42,7 +50,6 @@ namespace RichardP8Grocery
                 // input
                 itemPrice = double.Parse(txtItemCost.Text);
                 totalItems = int.Parse(txtNumItems.Text);
-                GroceryItem = txtItemName.Text;
 
                 // processing
                 subTotal = itemPrice * totalItems;
