@@ -39,13 +39,16 @@
             btnQuit = new Button();
             lblItemName = new Label();
             txtItemName = new TextBox();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton3 = new RadioButton();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            label1.Location = new Point(296, 9);
+            label1.Location = new Point(78, 25);
             label1.Name = "label1";
             label1.Size = new Size(212, 25);
             label1.TabIndex = 0;
@@ -55,7 +58,7 @@
             // 
             lblItemCost.AutoSize = true;
             lblItemCost.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblItemCost.Location = new Point(401, 67);
+            lblItemCost.Location = new Point(401, 35);
             lblItemCost.Name = "lblItemCost";
             lblItemCost.Size = new Size(61, 15);
             lblItemCost.TabIndex = 3;
@@ -63,7 +66,7 @@
             // 
             // txtItemCost
             // 
-            txtItemCost.Location = new Point(553, 64);
+            txtItemCost.Location = new Point(553, 32);
             txtItemCost.Name = "txtItemCost";
             txtItemCost.Size = new Size(146, 23);
             txtItemCost.TabIndex = 4;
@@ -74,7 +77,7 @@
             // 
             lblNumofItems.AutoSize = true;
             lblNumofItems.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblNumofItems.Location = new Point(401, 123);
+            lblNumofItems.Location = new Point(401, 90);
             lblNumofItems.Name = "lblNumofItems";
             lblNumofItems.Size = new Size(103, 15);
             lblNumofItems.TabIndex = 5;
@@ -82,7 +85,7 @@
             // 
             // txtNumItems
             // 
-            txtNumItems.Location = new Point(553, 123);
+            txtNumItems.Location = new Point(553, 87);
             txtNumItems.Name = "txtNumItems";
             txtNumItems.Size = new Size(146, 23);
             txtNumItems.TabIndex = 6;
@@ -111,7 +114,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(355, 393);
+            btnClear.Location = new Point(343, 393);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(107, 23);
             btnClear.TabIndex = 9;
@@ -133,7 +136,7 @@
             // 
             lblItemName.AutoSize = true;
             lblItemName.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblItemName.Location = new Point(78, 96);
+            lblItemName.Location = new Point(78, 90);
             lblItemName.Name = "lblItemName";
             lblItemName.Size = new Size(82, 15);
             lblItemName.TabIndex = 1;
@@ -141,18 +144,53 @@
             // 
             // txtItemName
             // 
-            txtItemName.Location = new Point(182, 93);
+            txtItemName.Location = new Point(181, 87);
             txtItemName.Name = "txtItemName";
             txtItemName.Size = new Size(147, 23);
             txtItemName.TabIndex = 2;
             txtItemName.Enter += txtItemName_Enter;
             txtItemName.Leave += txtItemName_Leave;
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(129, 152);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(52, 19);
+            radioButton1.TabIndex = 11;
+            radioButton1.Text = "Food";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(343, 152);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(102, 19);
+            radioButton2.TabIndex = 12;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Prepared Food";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.Location = new Point(599, 152);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(59, 19);
+            radioButton3.TabIndex = 13;
+            radioButton3.TabStop = true;
+            radioButton3.Text = "Liquor";
+            radioButton3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(radioButton3);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton1);
             Controls.Add(txtItemName);
             Controls.Add(lblItemName);
             Controls.Add(btnQuit);
@@ -183,5 +221,8 @@
         private Button btnQuit;
         private Label lblItemName;
         private TextBox txtItemName;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton3;
     }
 }

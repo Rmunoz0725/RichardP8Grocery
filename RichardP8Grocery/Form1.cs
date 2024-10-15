@@ -22,8 +22,8 @@ namespace RichardP8Grocery
         private void btnQuit_Click(object sender, EventArgs e)
         {
             DialogResult ButtonSelected;
-            ButtonSelected = MessageBox.Show(
-                "Do you really want to Quit?", "Exiting...",
+            ButtonSelected = MessageBox.Show
+                ("Do you really want to Quit?", "Exiting...",
                 MessageBoxButtons.YesNo);
             if (ButtonSelected == DialogResult.Yes)
             {
