@@ -1,10 +1,15 @@
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+//Richard Munoz
 namespace RichardP8Grocery
 {
     public partial class Form1 : Form
     {
+        private string ItemType;
+        const string Food = "Food";
+        const string Prepared_Food = "Prepared Food";
+        const string Liquor = "Liquor";
+
         public Form1()
         {
             InitializeComponent();
@@ -16,7 +21,7 @@ namespace RichardP8Grocery
             txtItemCost.Clear();
             txtNumItems.Clear();
             lstOutput.Items.Clear();
-            txtItemName.Focus();
+            rdoFood.Focus();
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace RichardP8Grocery
                 this.Close();
             }
         }
-
+      
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
             string GroceryItem;
@@ -39,12 +44,29 @@ namespace RichardP8Grocery
             int totalItems;
             bool ItemPriceValid, NumItemValid;
 
+            double ItemTypeFee = 0;
+
             ItemPriceValid = double.TryParse(txtItemCost.Text, out itemPrice);
             NumItemValid = int.TryParse(txtNumItems.Text, out totalItems);
 
             //if statement here
             if (ItemPriceValid && NumItemValid)
             {
+                switch (ItemType)
+                {
+                    case Food:
+                        ItemTypeFee = 0;
+                        break;
+                    case Prepared_Food:
+                        ItemTypeFee = 0;
+                        break;
+                    case Liquor:
+                        ItemTypeFee = 0;
+                        break;
+                    default:
+                        lstOutput.Items.Add("This should never happen");
+                        break;
+                }
                 // it is a good idea to dave string input to a variable
                 GroceryItem = txtItemName.Text;
                 // input
@@ -53,11 +75,13 @@ namespace RichardP8Grocery
 
                 // processing
                 subTotal = itemPrice * totalItems;
-                totalTaxPrice = subTotal * saleTaxRate;
+                totalTaxPrice = (subTotal * saleTaxRate) + ItemTypeFee;
                 totalPrice = totalTaxPrice + subTotal;
 
                 // output
                 lstOutput.Items.Add("Item scanned to buy is " + GroceryItem);
+                lstOutput.Items.Add("Item is a " + ItemType);
+                lstOutput.Items.Add("Item Type Fee is " + ItemTypeFee);
                 lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
                 lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
                 lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
@@ -67,15 +91,16 @@ namespace RichardP8Grocery
 
                 //this changes the focus of the clear button
                 btnClear.Focus();
-            }else
+            }
+            else
             {
                 if (!ItemPriceValid)
                 {
-                  lstOutput.Items.Add("Please enter a numeric entry for Item Cost");
+                    lstOutput.Items.Add("Please enter a numeric entry for Item Cost");
                 }
                 if (!NumItemValid)
                 {
-                  lstOutput.Items.Add("Please enter a numeric entry Number of Items");
+                    lstOutput.Items.Add("Please enter a numeric entry Number of Items");
                 }
             }
         }
@@ -108,6 +133,36 @@ namespace RichardP8Grocery
         private void txtItemName_Leave(object sender, EventArgs e)
         {
             txtItemName.BackColor = SystemColors.Window;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // this makes the checked changed procedure run ( it doesn't run if set in designer)
+            rdoFood.Checked = true;
+        }
+
+        private void rdoFood_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoFood.Checked)
+            {
+                ItemType = Food;
+            }
+        }
+
+        private void rdoPrepared_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoPrepared.Checked)
+            {
+                ItemType = Prepared_Food;
+            }
+        }
+
+        private void rdoLiquor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoLiquor.Checked)
+            {
+                ItemType = Liquor;
+            }
         }
     }
 }
