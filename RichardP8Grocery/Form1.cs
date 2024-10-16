@@ -40,7 +40,7 @@ namespace RichardP8Grocery
         {
             string GroceryItem;
             double saleTaxRate = .08875;
-            double subTotal, itemPrice, totalPrice, totalTaxPrice;
+            double subAmount, subTotal, itemPrice, totalPrice, totalTaxPrice, totalSetTaxPrice;
             int totalItems;
             bool ItemPriceValid, NumItemValid;
 
@@ -58,10 +58,10 @@ namespace RichardP8Grocery
                         ItemTypeFee = 0;
                         break;
                     case Prepared_Food:
-                        ItemTypeFee = 0;
+                        ItemTypeFee = .07;
                         break;
                     case Liquor:
-                        ItemTypeFee = 0;
+                        ItemTypeFee = .1;
                         break;
                     default:
                         lstOutput.Items.Add("This should never happen");
@@ -74,19 +74,22 @@ namespace RichardP8Grocery
                 totalItems = int.Parse(txtNumItems.Text);
 
                 // processing
-                subTotal = itemPrice * totalItems;
-                totalTaxPrice = (subTotal * saleTaxRate) + ItemTypeFee;
+                subAmount = itemPrice * totalItems;
+                totalSetTaxPrice = subAmount * ItemTypeFee;
+                subTotal = totalSetTaxPrice + subAmount;
+                totalTaxPrice = subTotal * saleTaxRate;
                 totalPrice = totalTaxPrice + subTotal;
 
                 // output
                 lstOutput.Items.Add("Item scanned to buy is " + GroceryItem);
                 lstOutput.Items.Add("Item is a " + ItemType);
-                lstOutput.Items.Add("Item Type Fee is " + ItemTypeFee);
+                lstOutput.Items.Add("Item Type Fee is " + ItemTypeFee.ToString("P2"));
                 lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
                 lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
                 lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
-                lstOutput.Items.Add("Sub total is " + subTotal.ToString("C2")); ;
+                lstOutput.Items.Add("Sub amount is " + subAmount.ToString("C2"));
                 lstOutput.Items.Add("Tax amount is " + totalTaxPrice.ToString("C2"));
+                lstOutput.Items.Add("Set Tax Amount is " + totalSetTaxPrice.ToString("C2"));
                 lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
 
                 //this changes the focus of the clear button
