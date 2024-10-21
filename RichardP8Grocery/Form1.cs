@@ -6,9 +6,9 @@ namespace RichardP8Grocery
     public partial class Form1 : Form
     {
         private string ItemType;
-        const string Food = "Food";
-        const string Prepared_Food = "Prepared Food";
-        const string Liquor = "Liquor";
+        const string FOOD = "Food";
+        const string PREPARED_FOOD = "Prepared Food";
+        const string LIQUOR = "Liquor";
 
         public Form1()
         {
@@ -54,13 +54,13 @@ namespace RichardP8Grocery
             {
                 switch (ItemType)
                 {
-                    case Food:
+                    case FOOD:
                         ItemTypeFee = 0;
                         break;
-                    case Prepared_Food:
+                    case PREPARED_FOOD:
                         ItemTypeFee = .07;
                         break;
-                    case Liquor:
+                    case LIQUOR:
                         ItemTypeFee = .1;
                         break;
                     default:
@@ -82,11 +82,11 @@ namespace RichardP8Grocery
 
                 // output
                 lstOutput.Items.Add("Item scanned to buy is " + GroceryItem);
+                lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
                 lstOutput.Items.Add("Item is a " + ItemType);
                 lstOutput.Items.Add("Item Type Fee is " + ItemTypeFee.ToString("P2"));
-                lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
-                lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
                 lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
+                lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
                 lstOutput.Items.Add("Sub amount is " + subAmount.ToString("C2"));
                 lstOutput.Items.Add("Tax amount is " + totalTaxPrice.ToString("C2"));
                 lstOutput.Items.Add("Set Tax Amount is " + totalSetTaxPrice.ToString("C2"));
@@ -148,7 +148,7 @@ namespace RichardP8Grocery
         {
             if (rdoFood.Checked)
             {
-                ItemType = Food;
+                ItemType = FOOD;
             }
         }
 
@@ -156,7 +156,7 @@ namespace RichardP8Grocery
         {
             if (rdoPrepared.Checked)
             {
-                ItemType = Prepared_Food;
+                ItemType = PREPARED_FOOD;
             }
         }
 
@@ -164,7 +164,7 @@ namespace RichardP8Grocery
         {
             if (rdoLiquor.Checked)
             {
-                ItemType = Liquor;
+                ItemType = LIQUOR;
             }
         }
     }
