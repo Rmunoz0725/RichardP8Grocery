@@ -1,3 +1,4 @@
+using System.Security;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //Richard Munoz
@@ -9,6 +10,8 @@ namespace RichardP8Grocery
         const string FOOD = "Food";
         const string PREPARED_FOOD = "Prepared Food";
         const string LIQUOR = "Liquor";
+
+        private string ItemTransactionLog = "ItemTransLog.txt";
 
         public Form1()
         {
@@ -40,11 +43,12 @@ namespace RichardP8Grocery
         {
             string GroceryItem;
             double saleTaxRate = .08875;
-            double subAmount, subTotal, itemPrice, totalPrice, totalTaxPrice, totalSetTaxPrice;
+            double subAmount, itemPrice, totalPrice, taxAmount;
             int totalItems;
             bool ItemPriceValid, NumItemValid;
 
-            double ItemTypeFee = 0;
+            // declare the object sw which is an instance of the class SteamWrite
+            StreamWriter sw;
 
             ItemPriceValid = double.TryParse(txtItemCost.Text, out itemPrice);
             NumItemValid = int.TryParse(txtNumItems.Text, out totalItems);
@@ -55,19 +59,19 @@ namespace RichardP8Grocery
                 switch (ItemType)
                 {
                     case FOOD:
-                        ItemTypeFee = 0;
+                        saleTaxRate = 0;
                         break;
                     case PREPARED_FOOD:
-                        ItemTypeFee = .07;
+                        saleTaxRate = .08;
                         break;
                     case LIQUOR:
-                        ItemTypeFee = .1;
+                        saleTaxRate = .10;
                         break;
                     default:
                         lstOutput.Items.Add("This should never happen");
                         break;
                 }
-                // it is a good idea to dave string input to a variable
+                // it is a good idea to save string input to a variable
                 GroceryItem = txtItemName.Text;
                 // input
                 itemPrice = double.Parse(txtItemCost.Text);
@@ -75,22 +79,30 @@ namespace RichardP8Grocery
 
                 // processing
                 subAmount = itemPrice * totalItems;
-                totalSetTaxPrice = subAmount * ItemTypeFee;
-                subTotal = totalSetTaxPrice + subAmount;
-                totalTaxPrice = subTotal * saleTaxRate;
-                totalPrice = totalTaxPrice + subTotal;
+                taxAmount = subAmount * saleTaxRate;
+                totalPrice = subAmount + taxAmount;
 
                 // output
                 lstOutput.Items.Add("Item scanned to buy is " + GroceryItem);
                 lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
                 lstOutput.Items.Add("Item is a " + ItemType);
-                lstOutput.Items.Add("Item Type Fee is " + ItemTypeFee.ToString("P2"));
                 lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
                 lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
                 lstOutput.Items.Add("Sub amount is " + subAmount.ToString("C2"));
-                lstOutput.Items.Add("Tax amount is " + totalTaxPrice.ToString("C2"));
-                lstOutput.Items.Add("Set Tax Amount is " + totalSetTaxPrice.ToString("C2"));
+                lstOutput.Items.Add("Total tax amount is " + taxAmount.ToString("C2"));
                 lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
+                sw = File.AppendText("ItemTransactionLog");
+                sw.WriteLine("******* Beginning of Transaction at " + DateTime.Now.ToString("G") + " *******");
+                sw.WriteLine("Item scanned to buy is " + GroceryItem);
+                sw.WriteLine("Total Number of Items is " + totalItems.ToString("N0"));
+                sw.WriteLine("Item is a " + ItemType);
+                sw.WriteLine("Tax Rate is " + saleTaxRate.ToString("P2"));
+                sw.WriteLine("Item Cost is " + itemPrice.ToString("C2"));
+                sw.WriteLine("Sub amount is " + subAmount.ToString("C2"));
+                sw.WriteLine("Total tax amount is " + taxAmount.ToString("C2"));
+                sw.WriteLine("Total Price is " + totalPrice.ToString("C2"));
+
+                sw.Close();
 
                 //this changes the focus of the clear button
                 btnClear.Focus();
@@ -149,6 +161,8 @@ namespace RichardP8Grocery
             if (rdoFood.Checked)
             {
                 ItemType = FOOD;
+
+
             }
         }
 
