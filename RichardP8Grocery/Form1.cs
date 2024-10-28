@@ -38,7 +38,7 @@ namespace RichardP8Grocery
                 this.Close();
             }
         }
-      
+
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
             string GroceryItem;
@@ -161,8 +161,6 @@ namespace RichardP8Grocery
             if (rdoFood.Checked)
             {
                 ItemType = FOOD;
-
-
             }
         }
 
