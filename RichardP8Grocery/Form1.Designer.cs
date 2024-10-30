@@ -43,6 +43,7 @@
             rdoPrepared = new RadioButton();
             rdoLiquor = new RadioButton();
             grpItemType = new GroupBox();
+            openFileDialog1 = new OpenFileDialog();
             grpItemType.SuspendLayout();
             SuspendLayout();
             // 
@@ -200,6 +201,10 @@
             grpItemType.TabStop = false;
             grpItemType.Text = "Item Type";
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -243,5 +248,6 @@
         private RadioButton rdoPrepared;
         private RadioButton rdoLiquor;
         private GroupBox grpItemType;
+        private OpenFileDialog openFileDialog1;
     }
 }

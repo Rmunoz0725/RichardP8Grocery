@@ -10,8 +10,13 @@ namespace RichardP8Grocery
         const string FOOD = "Food";
         const string PREPARED_FOOD = "Prepared Food";
         const string LIQUOR = "Liquor";
+        private double saleTaxRate;
+        private double FoodFee;
+        private double PreparedFoodFee;
+        private double LiquorFee;
 
         private string ItemTransactionLog = "ItemTransLog.txt";
+        private string GroceryConfig = "GroceryConfig.txt";
 
         public Form1()
         {
@@ -42,7 +47,6 @@ namespace RichardP8Grocery
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
             string GroceryItem;
-            double saleTaxRate = .08875;
             double subAmount, itemPrice, totalPrice, taxAmount;
             int totalItems;
             bool ItemPriceValid, NumItemValid;
@@ -59,13 +63,13 @@ namespace RichardP8Grocery
                 switch (ItemType)
                 {
                     case FOOD:
-                        saleTaxRate = 0;
+                        saleTaxRate = FoodFee;
                         break;
                     case PREPARED_FOOD:
-                        saleTaxRate = .08;
+                        saleTaxRate = PreparedFoodFee;
                         break;
                     case LIQUOR:
-                        saleTaxRate = .10;
+                        saleTaxRate = LiquorFee;
                         break;
                     default:
                         lstOutput.Items.Add("This should never happen");
@@ -92,7 +96,7 @@ namespace RichardP8Grocery
                 lstOutput.Items.Add("Total tax amount is " + taxAmount.ToString("C2"));
                 lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
                 sw = File.AppendText("ItemTransactionLog");
-                sw.WriteLine("******* Beginning of Transaction at " + DateTime.Now.ToString("G") + " *******");
+                sw.WriteLine("******* Beginning of Transaction at " + DateTime.Now.ToString("G") + "*******");
                 sw.WriteLine("Item scanned to buy is " + GroceryItem);
                 sw.WriteLine("Total Number of Items is " + totalItems.ToString("N0"));
                 sw.WriteLine("Item is a " + ItemType);
@@ -154,6 +158,34 @@ namespace RichardP8Grocery
         {
             // this makes the checked changed procedure run ( it doesn't run if set in designer)
             rdoFood.Checked = true;
+            StreamReader reader;
+            bool valValid;
+            bool fileBad = true;
+            do
+            {
+                try
+                {
+                    reader = File.OpenText(GroceryConfig);
+                    fileBad = false;
+                    //skipping validity checks so as not to confuse the input
+                    valValid = double.TryParse(reader.ReadLine(), out saleTaxRate);
+                    valValid = double.TryParse(reader.ReadLine(), out FoodFee);
+                    valValid = double.TryParse(reader.ReadLine(), out PreparedFoodFee);
+                    valValid = double.TryParse(reader.ReadLine(), out LiquorFee);
+
+                    reader.Close();
+                }
+                catch (FileNotFoundException ex)
+                {
+                    MessageBox.Show("The configuration file was not found. Please select a different file \n Error message was: " +
+                         ex.Message
+                         );
+                    openFileDialog1.InitialDirectory = Application.StartupPath;
+                    openFileDialog1.ShowDialog();
+                    //this takes the file the the user selected and puts it in the variable for the file we need
+                    GroceryConfig = openFileDialog1.FileName;
+                }
+            } while (fileBad);
         }
 
         private void rdoFood_CheckedChanged(object sender, EventArgs e)
