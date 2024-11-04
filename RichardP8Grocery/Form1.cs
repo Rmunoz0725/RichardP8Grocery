@@ -95,7 +95,7 @@ namespace RichardP8Grocery
                 lstOutput.Items.Add("Sub amount is " + subAmount.ToString("C2"));
                 lstOutput.Items.Add("Total tax amount is " + taxAmount.ToString("C2"));
                 lstOutput.Items.Add("Total Price is " + totalPrice.ToString("C2"));
-                sw = File.AppendText("ItemTransactionLog");
+                sw = File.AppendText(ItemTransactionLog);
                 sw.WriteLine("******* Beginning of Transaction at " + DateTime.Now.ToString("G") + "*******");
                 sw.WriteLine("Item scanned to buy is " + GroceryItem);
                 sw.WriteLine("Total Number of Items is " + totalItems.ToString("N0"));
