@@ -11,13 +11,33 @@ namespace RichardP8Grocery
         const string PREPARED_FOOD = "Prepared Food";
         const string LIQUOR = "Liquor";
         private double saleTaxRate;
-        private double FoodFee;
-        private double PreparedFoodFee;
-        private double LiquorFee;
+        private double foodFee;
+        private double preparedFoodFee;
+        private double liquorFee;
 
         private string ItemTransactionLog = "ItemTransLog.txt";
         private string GroceryConfig = "GroceryConfig.txt";
 
+        public double SaleTaxRate
+        {
+            get { return saleTaxRate; }
+            set { saleTaxRate = value; }
+        }
+        public double FoodFee
+        {
+            get { return foodFee; }
+            set { foodFee = value; }
+        }
+        public double PreparedFoodFee
+        {
+            get { return preparedFoodFee; }
+            set { preparedFoodFee = value; }
+        }
+        public double LiquorFee
+        {
+            get { return liquorFee; }
+            set { liquorFee = value; }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -63,13 +83,13 @@ namespace RichardP8Grocery
                 switch (ItemType)
                 {
                     case FOOD:
-                        saleTaxRate = FoodFee;
+                        SaleTaxRate = FoodFee;
                         break;
                     case PREPARED_FOOD:
-                        saleTaxRate = PreparedFoodFee;
+                        SaleTaxRate = PreparedFoodFee;
                         break;
                     case LIQUOR:
-                        saleTaxRate = LiquorFee;
+                        SaleTaxRate = LiquorFee;
                         break;
                     default:
                         lstOutput.Items.Add("This should never happen");
@@ -83,14 +103,14 @@ namespace RichardP8Grocery
 
                 // processing
                 subAmount = itemPrice * totalItems;
-                taxAmount = subAmount * saleTaxRate;
+                taxAmount = subAmount * SaleTaxRate;
                 totalPrice = subAmount + taxAmount;
 
                 // output
                 lstOutput.Items.Add("Item scanned to buy is " + GroceryItem);
                 lstOutput.Items.Add("Total Number of Items is " + totalItems.ToString("N0"));
                 lstOutput.Items.Add("Item is a " + ItemType);
-                lstOutput.Items.Add("Tax Rate is " + saleTaxRate.ToString("P2"));
+                lstOutput.Items.Add("Tax Rate is " + SaleTaxRate.ToString("P2"));
                 lstOutput.Items.Add("Item Cost is " + itemPrice.ToString("C2"));
                 lstOutput.Items.Add("Sub amount is " + subAmount.ToString("C2"));
                 lstOutput.Items.Add("Total tax amount is " + taxAmount.ToString("C2"));
@@ -100,7 +120,7 @@ namespace RichardP8Grocery
                 sw.WriteLine("Item scanned to buy is " + GroceryItem);
                 sw.WriteLine("Total Number of Items is " + totalItems.ToString("N0"));
                 sw.WriteLine("Item is a " + ItemType);
-                sw.WriteLine("Tax Rate is " + saleTaxRate.ToString("P2"));
+                sw.WriteLine("Tax Rate is " + SaleTaxRate.ToString("P2"));
                 sw.WriteLine("Item Cost is " + itemPrice.ToString("C2"));
                 sw.WriteLine("Sub amount is " + subAmount.ToString("C2"));
                 sw.WriteLine("Total tax amount is " + taxAmount.ToString("C2"));
@@ -167,11 +187,16 @@ namespace RichardP8Grocery
                 {
                     reader = File.OpenText(GroceryConfig);
                     fileBad = false;
+                    double tempValue;
                     //skipping validity checks so as not to confuse the input
-                    valValid = double.TryParse(reader.ReadLine(), out saleTaxRate);
-                    valValid = double.TryParse(reader.ReadLine(), out FoodFee);
-                    valValid = double.TryParse(reader.ReadLine(), out PreparedFoodFee);
-                    valValid = double.TryParse(reader.ReadLine(), out LiquorFee);
+                    valValid = double.TryParse(reader.ReadLine(), out tempValue);
+                    SaleTaxRate = tempValue;
+                    valValid = double.TryParse(reader.ReadLine(), out tempValue);
+                    FoodFee = tempValue;
+                    valValid = double.TryParse(reader.ReadLine(), out tempValue);
+                    PreparedFoodFee = tempValue;
+                    valValid = double.TryParse(reader.ReadLine(), out tempValue);
+                    LiquorFee = tempValue;
 
                     reader.Close();
                 }
