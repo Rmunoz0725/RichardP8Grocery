@@ -44,7 +44,10 @@
             rdoLiquor = new RadioButton();
             grpItemType = new GroupBox();
             openFileDialog1 = new OpenFileDialog();
+            menuStrip1 = new MenuStrip();
+            settingstoolStripMenuItem1 = new ToolStripMenuItem();
             grpItemType.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -205,6 +208,21 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { settingstoolStripMenuItem1 });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 15;
+            // 
+            // settingstoolStripMenuItem1
+            // 
+            settingstoolStripMenuItem1.Name = "settingstoolStripMenuItem1";
+            settingstoolStripMenuItem1.Size = new Size(61, 20);
+            settingstoolStripMenuItem1.Text = "&Settings";
+            settingstoolStripMenuItem1.Click += settingstoolStripMenuItem1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -222,11 +240,15 @@
             Controls.Add(txtItemCost);
             Controls.Add(lblItemCost);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Richard";
             Load += Form1_Load;
             grpItemType.ResumeLayout(false);
             grpItemType.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -249,5 +271,8 @@
         private RadioButton rdoLiquor;
         private GroupBox grpItemType;
         private OpenFileDialog openFileDialog1;
+        private MenuStrip menuStrip1;
+        private ToolStripTextBox toolStripTextBox1;
+        private ToolStripMenuItem settingstoolStripMenuItem1;
     }
 }

@@ -15,6 +15,8 @@ namespace RichardP8Grocery
         private double preparedFoodFee;
         private double liquorFee;
 
+        private Form2 settingForm;
+
         private string ItemTransactionLog = "ItemTransLog.txt";
         private string GroceryConfig = "GroceryConfig.txt";
 
@@ -176,6 +178,8 @@ namespace RichardP8Grocery
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            settingForm = new Form2(this);
+
             // this makes the checked changed procedure run ( it doesn't run if set in designer)
             rdoFood.Checked = true;
             StreamReader reader;
@@ -235,6 +239,16 @@ namespace RichardP8Grocery
             {
                 ItemType = LIQUOR;
             }
+        }
+
+        private void settingstoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            settingForm.txtSaleTaxRate.Text = SaleTaxRate.ToString();
+            settingForm.txtFoodFee.Text = FoodFee.ToString();
+            settingForm.txtPreparedFoodFee.Text = PreparedFoodFee.ToString();
+            settingForm.txtLiquorFee.Text = LiquorFee.ToString();
+
+            settingForm.ShowDialog();
         }
     }
 }
