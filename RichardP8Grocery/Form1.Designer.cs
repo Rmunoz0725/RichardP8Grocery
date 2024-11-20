@@ -46,6 +46,7 @@
             openFileDialog1 = new OpenFileDialog();
             menuStrip1 = new MenuStrip();
             settingstoolStripMenuItem1 = new ToolStripMenuItem();
+            btnDisplayLog = new Button();
             grpItemType.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -110,9 +111,9 @@
             // 
             // btnCalcPrice
             // 
-            btnCalcPrice.Location = new Point(78, 404);
+            btnCalcPrice.Location = new Point(55, 394);
             btnCalcPrice.Name = "btnCalcPrice";
-            btnCalcPrice.Size = new Size(140, 23);
+            btnCalcPrice.Size = new Size(106, 43);
             btnCalcPrice.TabIndex = 12;
             btnCalcPrice.Text = "Calculate Final &Price";
             btnCalcPrice.UseVisualStyleBackColor = true;
@@ -120,9 +121,9 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(355, 404);
+            btnClear.Location = new Point(246, 394);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(107, 23);
+            btnClear.Size = new Size(107, 44);
             btnClear.TabIndex = 13;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -130,9 +131,9 @@
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(599, 404);
+            btnQuit.Location = new Point(438, 394);
             btnQuit.Name = "btnQuit";
-            btnQuit.Size = new Size(100, 23);
+            btnQuit.Size = new Size(113, 43);
             btnQuit.TabIndex = 14;
             btnQuit.Text = "&Quit";
             btnQuit.UseVisualStyleBackColor = true;
@@ -223,11 +224,22 @@
             settingstoolStripMenuItem1.Text = "&Settings";
             settingstoolStripMenuItem1.Click += settingstoolStripMenuItem1_Click;
             // 
+            // btnDisplayLog
+            // 
+            btnDisplayLog.Location = new Point(636, 394);
+            btnDisplayLog.Name = "btnDisplayLog";
+            btnDisplayLog.Size = new Size(113, 43);
+            btnDisplayLog.TabIndex = 16;
+            btnDisplayLog.Text = "&Display Transaction Logs";
+            btnDisplayLog.UseVisualStyleBackColor = true;
+            btnDisplayLog.Click += btnDisplayLog_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDisplayLog);
             Controls.Add(grpItemType);
             Controls.Add(txtItemName);
             Controls.Add(lblItemName);
@@ -274,5 +286,6 @@
         private MenuStrip menuStrip1;
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripMenuItem settingstoolStripMenuItem1;
+        private Button btnDisplayLog;
     }
 }

@@ -18,7 +18,7 @@ namespace RichardP8Grocery
         private Form2 settingForm;
 
         private string ItemTransactionLog = "ItemTransLog.txt";
-        private string GroceryConfig = "GroceryConfig.txt";
+        public string GroceryConfig = "GroceryConfig.txt";
 
         public double SaleTaxRate
         {
@@ -249,6 +249,23 @@ namespace RichardP8Grocery
             settingForm.txtLiquorFee.Text = LiquorFee.ToString();
 
             settingForm.ShowDialog();
+        }
+
+        private void btnDisplayLog_Click(object sender, EventArgs e)
+        {
+            // define the size needed for the array
+            const int MAX_LOG_SIZE = 2000;
+            // declaring the array
+            string[] ItemLogs = new string[MAX_LOG_SIZE];
+            StreamReader sr = File.OpenText(ItemTransactionLog);
+            int numLines = 0;
+            while (!sr.EndOfStream)
+            {
+                // reading in a line of the log file and putting into the array
+                ItemLogs[numLines] = sr.ReadLine();
+                numLines++;
+            }
+            sr.Close();
         }
     }
 }
