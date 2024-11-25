@@ -243,29 +243,45 @@ namespace RichardP8Grocery
 
         private void settingstoolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            setValuesOnSecondForm();
+            settingForm.ShowDialog();
+        }
+
+        public void setValuesOnSecondForm()
+        {
             settingForm.txtSaleTaxRate.Text = SaleTaxRate.ToString();
             settingForm.txtFoodFee.Text = FoodFee.ToString();
             settingForm.txtPreparedFoodFee.Text = PreparedFoodFee.ToString();
             settingForm.txtLiquorFee.Text = LiquorFee.ToString();
-
-            settingForm.ShowDialog();
         }
-
         private void btnDisplayLog_Click(object sender, EventArgs e)
         {
             // define the size needed for the array
             const int MAX_LOG_SIZE = 2000;
             // declaring the array
-            string[] ItemLogs = new string[MAX_LOG_SIZE];
+            string[] ItemLogLines = new string[MAX_LOG_SIZE];
             StreamReader sr = File.OpenText(ItemTransactionLog);
-            int numLines = 0;
+            int numLogLines = 0;
             while (!sr.EndOfStream)
             {
                 // reading in a line of the log file and putting into the array
-                ItemLogs[numLines] = sr.ReadLine();
-                numLines++;
+                ItemLogLines[numLogLines] = sr.ReadLine();
+                numLogLines++;
             }
             sr.Close();
+            int begTrans = -2;
+            int endTrans = 5;
+
+            for (int i=0; i < numLogLines; i++)
+            {
+                if (ItemLogLines[i] == "")
+                {
+                    for (int j=i+begTrans; j<=i+endTrans; j++)
+                    {
+                        lstOutput.Items.Add(ItemLogLines[j]);
+                    }
+                }
+            }
         }
     }
 }

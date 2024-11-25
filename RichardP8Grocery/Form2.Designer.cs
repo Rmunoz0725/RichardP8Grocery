@@ -38,6 +38,7 @@
             txtLiquorFee = new TextBox();
             label5 = new Label();
             btnSetReturn = new Button();
+            lblErrorMsg = new Label();
             SuspendLayout();
             // 
             // lblSaleTaxRate
@@ -55,6 +56,7 @@
             txtSaleTaxRate.Name = "txtSaleTaxRate";
             txtSaleTaxRate.Size = new Size(100, 23);
             txtSaleTaxRate.TabIndex = 1;
+            txtSaleTaxRate.Leave += txtSaleTaxRate_Leave;
             // 
             // lblFoodFee
             // 
@@ -123,11 +125,21 @@
             btnSetReturn.UseVisualStyleBackColor = true;
             btnSetReturn.Click += btnSetReturn_Click;
             // 
+            // lblErrorMsg
+            // 
+            lblErrorMsg.AutoSize = true;
+            lblErrorMsg.Location = new Point(137, 402);
+            lblErrorMsg.Name = "lblErrorMsg";
+            lblErrorMsg.Size = new Size(81, 15);
+            lblErrorMsg.TabIndex = 10;
+            lblErrorMsg.Text = "Error Message";
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(370, 426);
+            Controls.Add(lblErrorMsg);
             Controls.Add(btnSetReturn);
             Controls.Add(label5);
             Controls.Add(txtLiquorFee);
@@ -157,5 +169,6 @@
         public TextBox txtPreparedFoodFee;
         public TextBox txtLiquorFee;
         public TextBox txtSaleTaxRate;
+        private Label lblErrorMsg;
     }
 }
