@@ -16,3 +16,66 @@ Item Cost is $6.00
 Sub amount is $6.00
 Total tax amount is $0.00
 Total Price is $6.00
+******* Beginning of Transaction at 12/4/2024 10:50:08 AM*******
+Item scanned to buy is Salad
+Total Number of Items is 1
+Item is a Food
+Tax Rate is 0.00%
+Item Cost is $5.00
+Sub amount is $5.00
+Total tax amount is $0.00
+Total Price is $5.00
+******* Beginning of Transaction at 12/4/2024 10:50:19 AM*******
+Item scanned to buy is Salad
+Total Number of Items is 1
+Item is a Prepared Food
+Tax Rate is 0.00%
+Item Cost is $8.00
+Sub amount is $8.00
+Total tax amount is $0.00
+Total Price is $8.00
+******* Beginning of Transaction at 12/4/2024 10:54:07 AM*******
+Item scanned to buy is dsa
+Total Number of Items is 2
+Item is a Food
+Tax Rate is 0.00%
+Item Cost is $2.00
+Sub amount is $4.00
+Total tax amount is $0.00
+Total Price is $4.00
+******* Beginning of Transaction at 12/4/2024 10:54:18 AM*******
+Item scanned to buy is da
+Total Number of Items is 1
+Item is a Prepared Food
+Tax Rate is 0.00%
+Item Cost is $24.00
+Sub amount is $24.00
+Total tax amount is $0.00
+Total Price is $24.00
+******* Beginning of Transaction at 12/4/2024 10:58:07 AM*******
+Item scanned to buy is Egg
+Total Number of Items is 1
+Item is a Food
+Tax Rate is 0.00%
+Item Cost is $6.00
+Sub amount is $6.00
+Total tax amount is $0.00
+Total Price is $6.00
+******* Beginning of Transaction at 12/4/2024 10:58:23 AM*******
+Item scanned to buy is Salad
+Total Number of Items is 1
+Item is a Prepared Food
+Tax Rate is 7.00%
+Item Cost is $6.00
+Sub amount is $6.00
+Total tax amount is $0.42
+Total Price is $6.42
+******* Beginning of Transaction at 12/4/2024 10:58:44 AM*******
+Item scanned to buy is Jack
+Total Number of Items is 1
+Item is a Liquor
+Tax Rate is 10.00%
+Item Cost is $140.00
+Sub amount is $140.00
+Total tax amount is $14.00
+Total Price is $154.00
