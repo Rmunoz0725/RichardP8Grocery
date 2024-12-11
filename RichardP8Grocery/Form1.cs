@@ -121,7 +121,7 @@ namespace RichardP8Grocery
                 sw.WriteLine("******* Beginning of Transaction at " + DateTime.Now.ToString("G") + "*******");
                 sw.WriteLine("Item scanned to buy is " + GroceryItem);
                 sw.WriteLine("Total Number of Items is " + totalItems.ToString("N0"));
-                sw.WriteLine("Item is a " + ItemType);
+                sw.WriteLine("Item is" + ItemType);
                 sw.WriteLine("Tax Rate is " + SaleTaxRate.ToString("P2"));
                 sw.WriteLine("Item Cost is " + itemPrice.ToString("C2"));
                 sw.WriteLine("Sub amount is " + subAmount.ToString("C2"));
@@ -256,29 +256,32 @@ namespace RichardP8Grocery
         }
         private void btnDisplayLog_Click(object sender, EventArgs e)
         {
-            // define the size needed for the array
             const int MAX_LOG_SIZE = 2000;
-            // declaring the array
             string[] ItemLogLines = new string[MAX_LOG_SIZE];
-            StreamReader sr = File.OpenText(ItemTransactionLog);
             int numLogLines = 0;
+
+            StreamReader sr;
+            sr = File.OpenText(ItemTransactionLog);
             while (!sr.EndOfStream)
             {
-                // reading in a line of the log file and putting into the array
                 ItemLogLines[numLogLines] = sr.ReadLine();
                 numLogLines++;
             }
             sr.Close();
-            int begTrans = -2;
+
+            int begTrans = -3;
             int endTrans = 5;
 
-            for (int i=0; i < numLogLines; i++)
+            for (int i = 0; i < numLogLines; i++)
             {
-                if (ItemLogLines[i] == "")
+                if (ItemLogLines[i].Contains(ItemType))
                 {
-                    for (int j=i+begTrans; j<=i+endTrans; j++)
+                    for (int j = i + begTrans; j <= i + endTrans; j++)
                     {
-                        lstOutput.Items.Add(ItemLogLines[j]);
+                        if (j >= 0 && j < numLogLines)
+                        {
+                            lstOutput.Items.Add(ItemLogLines[j]);
+                        }
                     }
                 }
             }
